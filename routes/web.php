@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\PpdbController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,3 +17,4 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [BooksController::class, 'index']);
+Route::get('/ppdb', [PpdbController::class, 'index']);

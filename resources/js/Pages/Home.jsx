@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import PanelAdmin from "../Components/PanelAdmin";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+    return (
+        <PanelAdmin>
+            <div>Home</div>
+        </PanelAdmin>
+    );
+};
 
-export default Home
+export default Home;
