@@ -72,7 +72,7 @@ const Ppdb = () => {
                         </label>
                         <select
                             id="agama"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value="islam">Islam</option>
                             <option value="kristen">Kristen</option>
@@ -95,7 +95,7 @@ const Ppdb = () => {
                         </label>
                         <select
                             id="status_keluarga"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value="kandung">Kandung</option>
                             <option value="tiri">Tiri</option>
@@ -133,7 +133,7 @@ const Ppdb = () => {
                         </label>
                         <select
                             id="status_keluarga"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value=""></option>
                             <option value="yatim">Yatim</option>
@@ -192,12 +192,12 @@ const Ppdb = () => {
                 </h1>
                 <div className="h-fit w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-md duration-300 mt-4 gap-3">
                     <div className="relative">
-                        <label className="font-medium" htmlFor="goldarah">
+                        <label className="font-medium required" htmlFor="goldarah">
                             Golongan Darah
                         </label>
                         <select
                             id="goldarah"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value="a+">A+</option>
                             <option value="a-">A-</option>
@@ -209,7 +209,7 @@ const Ppdb = () => {
                             <option value="o-">O-</option>
                             <option value="rhnull">RH-Null</option>
                         </select>
-                        <div className="absolute right-5 bottom-10">
+                        <div className="absolute right-5 top-11">
                             <FiArrowDown />
                         </div>
                     </div>
@@ -253,7 +253,7 @@ const Ppdb = () => {
                         </label>
                         <select
                             id="agama_ayah"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value="islam">Islam</option>
                             <option value="kristen">Kristen</option>
@@ -326,7 +326,7 @@ const Ppdb = () => {
                         </label>
                         <select
                             id="agama_ibu"
-                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10"
+                            className="flex px-3 py-2 border-2 w-full outline-none mt-2 rounded-lg appearance-none pr-10 bg-white"
                         >
                             <option value="islam">Islam</option>
                             <option value="kristen">Kristen</option>
