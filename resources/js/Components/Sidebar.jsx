@@ -12,13 +12,13 @@ import {
     HiPresentationChartBar,
     HiRectangleGroup,
 } from "react-icons/hi2";
-import { HiChevronDown } from 'react-icons/hi'
+import { HiChevronDown } from "react-icons/hi";
 import PanelAdminContext from "../Utils/PanelAdminContext";
 import { Link } from "@inertiajs/react";
 
 const Sidebar = ({ active }) => {
     const { IsShow, setShow } = useContext(PanelAdminContext);
-    const [ isCollapseDataSiswa, setCollapseDataSiswa ] = useState(false)
+    const [isCollapseDataSiswa, setCollapseDataSiswa] = useState(false);
 
     useEffect(() => {
         const handleResize = () => {
@@ -63,12 +63,18 @@ const Sidebar = ({ active }) => {
                     <h1 className="mt-4 text-sm ml-4 py-2">Master Data</h1>
 
                     <div
-                        className={`${isCollapseDataSiswa ? 'h-64' : 'h-10'}  flex flex-col w-full duration-300 px-4 ease-in-out rounded-md py-2 overflow-hidden`}
+                        className={`${
+                            isCollapseDataSiswa
+                                ? "h-64"
+                                : "h-10 hover:bg-gray-200"
+                        }  flex flex-col w-full duration-300 px-4 ease-in-out rounded-md py-2 overflow-hidden`}
                     >
                         <div
                             id="master_data"
                             className="flex flex-row w-full justify-between h-fit cursor-pointer"
-                            onClick={() => setCollapseDataSiswa((callback) => !callback)}
+                            onClick={() =>
+                                setCollapseDataSiswa((callback) => !callback)
+                            }
                         >
                             <div className="flex flex-row items-center w-full relative">
                                 <HiMiniUsers />
@@ -76,7 +82,13 @@ const Sidebar = ({ active }) => {
                                 <p className="ml-5 text-[15px] md:text-[16px] lg:text-[15px] transition ease-in-out">
                                     Data Siswa
                                 </p>
-                                <HiChevronDown className={`absolute right-0 ${isCollapseDataSiswa ? 'rotate-180' : 'rotate-0'} duration-300 ease-in-out`} />
+                                <HiChevronDown
+                                    className={`absolute right-0 ${
+                                        isCollapseDataSiswa
+                                            ? "rotate-180"
+                                            : "rotate-0"
+                                    } duration-300 ease-in-out`}
+                                />
                             </div>
                         </div>
                         <div className="flex flex-row w-full mt-2">
@@ -84,12 +96,12 @@ const Sidebar = ({ active }) => {
                                 <div className="bg-gray-300 w-[1px] h-full"></div>
                             </div>
                             <div className="flex w-full h-full flex-col px-0 cursor-default">
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas1">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas1"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -97,12 +109,12 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas2">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas2"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -110,12 +122,12 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas3">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas3"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -123,12 +135,12 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas4">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas4"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -136,12 +148,12 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas5">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas5"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -149,12 +161,12 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                <Link to="/products/snack">
+                                <Link href="/admin/data-siswa/kelas6">
                                     <div
                                         className={`${
-                                            active == "Snack"
-                                                ? "bg-orange-400 text-white"
-                                                : "hover:bg-gray-200"
+                                            active == "kelas6"
+                                                ? "bg-gray-200"
+                                                : "hover:bg-gray-100"
                                         } text-primary  text-sm py-2 px-2 rounded-md w-full`}
                                     >
                                         <div className="flex flex-row justify-between items-center">
@@ -162,10 +174,8 @@ const Sidebar = ({ active }) => {
                                         </div>
                                     </div>
                                 </Link>
-                                
                             </div>
                         </div>
-                        
                     </div>
                     <Link
                         href="/dashboard"
@@ -199,6 +209,22 @@ const Sidebar = ({ active }) => {
                             </p>
                         </div>
                     </Link>
+                    <Link
+                        href="/dashboard"
+                        className={`flex flex-row justify-between h-fit py-2 cursor-pointer menu flex-none ${
+                            active == "Nilai"
+                                ? "bg-primary text-white"
+                                : "hover:bg-gray-200"
+                        } px-4 rounded-md`}
+                    >
+                        <div className="flex flex-row items-center w-full">
+                            <HiClipboardDocument />
+
+                            <p className="ml-5 poppins-medium text-[15px] md:text-[16px] lg:text-[15px] transition ease-in-out">
+                                Rapor
+                            </p>
+                        </div>
+                    </Link>
                     <h1 className="mt-4 text-sm ml-4 py-2">Laporan</h1>
                     <Link
                         href="/dashboard"
@@ -216,24 +242,6 @@ const Sidebar = ({ active }) => {
                             </p>
                         </div>
                     </Link>
-
-                    <Link
-                        href="/dashboard"
-                        className={`flex flex-row justify-between h-fit py-2 cursor-pointer menu flex-none ${
-                            active == "Nilai"
-                                ? "bg-primary text-white"
-                                : "hover:bg-gray-200"
-                        } px-4 rounded-md`}
-                    >
-                        <div className="flex flex-row items-center w-full">
-                            <HiClipboardDocument />
-
-                            <p className="ml-5 poppins-medium text-[15px] md:text-[16px] lg:text-[15px] transition ease-in-out">
-                                Rapor
-                            </p>
-                        </div>
-                    </Link>
-                    <h1 className="mt-4 text-sm ml-4 py-2">Pencatatan</h1>
                     <Link
                         href="/dashboard"
                         className={`flex flex-row justify-between h-fit py-2 cursor-pointer menu flex-none ${
@@ -300,7 +308,6 @@ const Sidebar = ({ active }) => {
                         </div>
                     </Link> */}
                 </div>
-                
             </div>
             <div
                 onClick={() => setShow(false)}
