@@ -2,6 +2,7 @@ import React from "react";
 import "./local.css";
 import LayoutInput from "./LayoutInput";
 import { FiArrowDown } from "react-icons/fi";
+import InputImage from "../../Components/InputImage";
 
 const Ppdb = () => {
     return (
@@ -40,6 +41,10 @@ const Ppdb = () => {
                     <LayoutInput
                         id={"nama_panggilan"}
                         title={"Nama Panggilan"}
+                    />
+                    <LayoutInput
+                        id={"nik"}
+                        title={"NIK"}
                     />
                     <LayoutInput id={"tempat_lahir"} title={"Tempat Lahir"} />
                     <LayoutInput
@@ -388,10 +393,19 @@ const Ppdb = () => {
                     Kegemaran
                 </h1>
                 <div className="h-fit w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-md duration-300 mt-4 gap-3">
-                    <LayoutInput id={"kegemaran"} title={"Kegemaran"} />
-                    <LayoutInput id={"olahraga"} title={"Olahraga"} />
-                    <LayoutInput id={"organisasi"} title={"Organisasi"} />
-                    <LayoutInput id={"kegemaran_lainnya"} title={"Lainnya"} />
+                    <LayoutInput id={"kegemaran1"} title={"Kegemaran 1"} optional />
+                    <LayoutInput id={"kegemaran2"} title={"Kegemaran 2"} optional />
+                    <LayoutInput id={"kegemaran3"} title={"Kegemaran 3"} optional />
+                </div>
+            </div>
+            <div className="flex flex-col flex-grow h-full w-full mt-6 container mx-auto px-6">
+                <h1 className="font-semibold text-xl mt-4 border-b-2 pb-6 text-left">
+                    Lampiran
+                </h1>
+                <div className="h-fit w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-md duration-300 mt-4 gap-3">
+                    <InputImage title="Pas Photo 3x4cm" />
+                    <InputImage title="Kartu Keluarga" />
+                    <InputImage title="Ijazah PAUD / TK" />
                 </div>
             </div>
             <div className="container mx-auto flex px-6 mt-12">
