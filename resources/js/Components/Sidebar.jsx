@@ -66,7 +66,7 @@ const Sidebar = ({ active }) => {
                         className={`${
                             isCollapseDataSiswa
                                 ? "h-64"
-                                : "h-10 hover:bg-gray-200"
+                                : "h-9 hover:bg-gray-200"
                         }  flex flex-col w-full duration-300 px-4 ease-in-out rounded-md py-2 overflow-hidden`}
                     >
                         <div
