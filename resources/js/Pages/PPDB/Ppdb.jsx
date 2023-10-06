@@ -384,7 +384,7 @@ const Ppdb = () => {
                     </div>
                     <LayoutInput
                         id={"kewarganegaraan_ibu"}
-                        title={"Indonesia"}
+                        title={"Kewarganegaraan"}
                     />
                 </div>
             </div>
