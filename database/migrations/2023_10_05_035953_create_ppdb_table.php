@@ -63,10 +63,10 @@ return new class extends Migration
             $table->string('kegemaran1', 30);
             $table->string('kegemaran2', 30);
             $table->string('kegemaran3', 30);
-
             $table->string('foto_pas');
             $table->string('foto_kartu_keluarga');
             $table->string('foto_ijazah');
+            $table->enum('status', ['menunggu', 'diterima', 'ditolak']);
             
             $table->timestamps();
         });
