@@ -19,9 +19,13 @@ class PelajaranController extends Controller
         ]);
     }
 
-    public function getData()
+    public function getData(Request $request)
     {
-        $data = Pelajaran::with('detail')->orderBy('created_at', 'desc')->get();
+        if ($request->query('search') != '') {
+            $data = Pelajaran::with('detail')->where('nama_mapel', 'LIKE', '%' . $request->query('search') . '%')->orderBy('created_at', 'desc')->paginate(6);
+        } else {
+            $data = Pelajaran::with('detail')->orderBy('created_at', 'desc')->paginate(6);
+        }
         return Response()->json(
             array(
                 "status" => "Success",
@@ -147,7 +151,7 @@ class PelajaranController extends Controller
             ), 200);
         }
 
-        for ($i=0; $i < count($request->id); $i++) { 
+        for ($i = 0; $i < count($request->id); $i++) {
             Pelajaran::where('id', $request->id[$i])->delete();
         }
 

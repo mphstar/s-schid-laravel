@@ -8,9 +8,12 @@ import InputNilaiMapel from "./InputNilaiMapel";
 import useSWR, { mutate } from "swr";
 import { fetcher } from "../../../Utils/Fetcher";
 import Swal from "sweetalert2";
+import Pagination from "../../../Components/Pagination";
 
 const Mapel = () => {
-    const url = "/api/mata-pelajaran";
+    const [page, setPage] = useState(1);
+    const [search, setSearch] = useState("");
+    const url = `/api/mata-pelajaran?page=${page}&search=${search}`;
     const { data, isLoading, error } = useSWR(url, fetcher);
 
     const [selectedRows, setSelectedRows] = useState([]);
@@ -91,9 +94,7 @@ const Mapel = () => {
             if (selectAll) {
                 setSelectedRows([]);
             } else {
-                setSelectedRows(
-                    data.data.map((item) => item.id)
-                );
+                setSelectedRows(data.data.data.map((item) => item.id));
             }
             setSelectAll(!selectAll);
         }
@@ -139,8 +140,8 @@ const Mapel = () => {
                                 `${data.messages}`,
                                 "success"
                             ).then(() => {
-                                setSelectedRows([])
-                                setSelectAll(false)
+                                setSelectedRows([]);
+                                setSelectAll(false);
                                 mutate(url);
                             });
                         } else {
@@ -223,7 +224,7 @@ const Mapel = () => {
                     </nav>
                     <div className="flex flex-col md:flex-row w-full h-fit mt-2 justify-between gap-4">
                         <input
-                            onChange={(e) => {}}
+                            onChange={(e) => setSearch(e.target.value)}
                             className="py-2 px-6 border-[2px] rounded-lg outline-none w-full md:flex-1 md:max-w-[400px]"
                             placeholder="Search..."
                             type="text"
@@ -311,7 +312,7 @@ const Mapel = () => {
                                     </>
                                 ) : undefined}
                                 {data ? (
-                                    data.data.length == 0 ? (
+                                    data.data.data.length == 0 ? (
                                         <tr>
                                             <td
                                                 colSpan={6}
@@ -321,7 +322,7 @@ const Mapel = () => {
                                             </td>
                                         </tr>
                                     ) : (
-                                        data.data.map((item, index) => {
+                                        data.data.data.map((item, index) => {
                                             return (
                                                 <tr key={index}>
                                                     <td className="px-4 w-16 text-center">
@@ -398,6 +399,16 @@ const Mapel = () => {
                             </tbody>
                         </table>
                     </div>
+                    {/* paginate */}
+                    {data ? (
+                        <Pagination
+                            page={page}
+                            setPage={setPage}
+                            lastPage={data.data.last_page}
+                            total={data.data.total}
+                            showItem={data.data.per_page}
+                        />
+                    ) : undefined}
                 </div>
             </PanelAdmin>
         </MapelContext.Provider>
