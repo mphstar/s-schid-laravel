@@ -36,7 +36,7 @@ const Sidebar = ({ active }) => {
             <div
                 className={`flex flex-col w-[80%] ${
                     IsShow ? "translate-x-0" : "-translate-x-[400px]"
-                }  md:translate-x-0 duration-500 font-poppins-regular ease-in-out max-w-[400px] md:w-[320px] lg:w-[290px] h-full bg-white border-r-[1px] border-r-[#DCDADA] box-border fixed z-[100] pb-10 2xl:pb-10 overflow-y-auto md:scrollbar-hide`}
+                }  md:translate-x-0 duration-500 font-poppins-regular ease-in-out max-w-[400px] md:w-[320px] lg:w-[290px] h-full bg-white border-r-[1px] border-r-[#DCDADA] box-border fixed z-[105] pb-10 2xl:pb-10 overflow-y-auto md:scrollbar-hide`}
                 id="sidebar"
             >
                 <div className="flex flex-col w-full px-8 py-6 gap-3">
@@ -178,9 +178,9 @@ const Sidebar = ({ active }) => {
                         </div>
                     </div>
                     <Link
-                        href="/dashboard"
+                        href="/admin/mata-pelajaran"
                         className={`flex flex-row justify-between h-fit py-2 cursor-pointer menu flex-none ${
-                            active == "Nilai"
+                            active == "mapel"
                                 ? "bg-primary text-white"
                                 : "hover:bg-gray-200"
                         } px-4 rounded-md`}
@@ -311,7 +311,7 @@ const Sidebar = ({ active }) => {
             </div>
             <div
                 onClick={() => setShow(false)}
-                className={`w-screen fixed h-screen flex bg-black z-[98] ${
+                className={`w-screen fixed h-screen flex bg-black z-[101] ${
                     IsShow ? "opacity-30 pointer-events-auto" : "opacity-0"
                 } duration-500 ease-in-out pointer-events-none`}
             ></div>

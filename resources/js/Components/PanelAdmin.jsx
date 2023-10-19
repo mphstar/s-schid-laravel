@@ -3,10 +3,11 @@ import PanelAdminContext from "../Utils/PanelAdminContext";
 import Sidebar from "./Sidebar";
 import HeaderAdmin from "./HeaderAdmin";
 
-const PanelAdmin = ({children, actived}) => {
+const PanelAdmin = ({children, actived, modal}) => {
     const [IsShow, setShow] = useState(false);
     return (
         <PanelAdminContext.Provider value={{ IsShow, setShow }}>
+            { modal }
             <div className="">
                 <div className="">
                     <Sidebar active={actived} />

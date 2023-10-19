@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('detail_mata_pelajaran', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('mapel_id')->constrained()->onUpdate('cascade')->onDelete('cascade')->references('id')->on('mata_pelajaran');
             $table->string('judul_nilai', 50);
             $table->timestamps();

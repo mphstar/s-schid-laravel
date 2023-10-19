@@ -27,3 +27,63 @@
         @apply font-poppins-regular box-border;
     }
 }
+
+.loading-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.circle {
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+
+.box {
+    height: 70px;
+    width: 70px;
+}
+
+.line {
+    height: 50px;
+    width: 300px;
+}
+
+.loadingspinner {
+    pointer-events: none;
+    width: 2.5em;
+    height: 2.5em;
+    border: 0.4em solid transparent;
+    border-color: #eee;
+    border-top-color: rgb(251 146 60);
+    border-radius: 50%;
+    outline: none;
+    animation: loadingspin 1s linear infinite;
+}
+
+@keyframes loadingspin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.body-loading {
+    border: none;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
