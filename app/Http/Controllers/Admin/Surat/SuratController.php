@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin\Surat;
 
 use App\Http\Controllers\Controller;
 use App\Models\Surat;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 
@@ -21,6 +23,12 @@ class SuratController extends Controller
     {
         if ($request->query('search') != '') {
             $data = Surat::where('judul', 'LIKE', '%' . $request->query('search') . '%')->orderBy('created_at', 'desc')->paginate(6);
+        } else if ($request->query('filter') != '') {
+            $dataa = json_decode(base64_decode($request->filter));
+            $date_awal = $dataa->awal;
+            $date_akhir = $dataa->akhir;
+
+            $data = Surat::whereBetween(DB::raw('DATE(created_at)'), [$date_awal, $date_akhir])->orderBy('created_at', 'desc')->paginate(6);
         } else {
             $data = Surat::orderBy('created_at', 'desc')->paginate(6);
         }
@@ -28,7 +36,8 @@ class SuratController extends Controller
             array(
                 "status" => "Success",
                 "messages" => "Berhasil mendapatkan data",
-                "data" => $data
+                "data" => $data,
+                "tanggal" => Carbon::now()
             ),
             200
         );

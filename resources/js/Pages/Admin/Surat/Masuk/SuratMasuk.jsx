@@ -9,6 +9,7 @@ import { fetcher } from "../../../../Utils/Fetcher";
 import useSWR, { mutate } from "swr";
 import Pagination from "../../../../Components/Pagination";
 import Swal from "sweetalert2";
+import FilterDate from "../../../../Components/FilterDate";
 
 const SuratMasuk = () => {
     const { props } = usePage();
@@ -27,7 +28,7 @@ const SuratMasuk = () => {
         isAdd: true,
     });
 
-    const url = `/api/surat/masuk?page${page}&search=${option.search}&filter=${option.filter}`;
+    const url = `/api/surat/masuk?page${page}&search=${option.search}&filter=${option.date}`;
     const { data, isLoading, error } = useSWR(url, fetcher);
 
     const [selectedRows, setSelectedRows] = useState([]);
@@ -158,6 +159,7 @@ const SuratMasuk = () => {
             value={{ option, setOption, dataSelected, setDataSelected, url }}
         >
             <ModalSuratMasuk />
+            <FilterDate option={option} setOption={setOption} />
             <PanelAdmin actived={props.route}>
                 <div className="h-fit flex-grow flex flex-col py-4 px-6 md:px-12 bg-gray-100">
                     <nav
@@ -231,7 +233,9 @@ const SuratMasuk = () => {
                                 type="text"
                             />
                             <div
-                                onClick={() => {}}
+                                onClick={() => {
+                                    setOption({ ...option, filter: true });
+                                }}
                                 className="bg-orange-500 hover:bg-orange-600 px-3 py-2 text-white rounded-md items-center justify-center"
                             >
                                 <BsCalendarDate className="h-full" />
