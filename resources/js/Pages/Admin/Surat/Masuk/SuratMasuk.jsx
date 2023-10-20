@@ -34,124 +34,124 @@ const SuratMasuk = () => {
     const [selectAll, setSelectAll] = useState(false);
 
     const handleCheckboxChange = (id) => {
-      if (selectedRows.includes(id)) {
-          setSelectedRows(selectedRows.filter((rowId) => rowId !== id));
-      } else {
-          setSelectedRows([...selectedRows, id]);
-      }
-  };
+        if (selectedRows.includes(id)) {
+            setSelectedRows(selectedRows.filter((rowId) => rowId !== id));
+        } else {
+            setSelectedRows([...selectedRows, id]);
+        }
+    };
 
-  const handleSelectAll = () => {
-      if (data) {
-          if (selectAll) {
-              setSelectedRows([]);
-          } else {
-              setSelectedRows(data.data.data.map((item) => item.id));
-          }
-          setSelectAll(!selectAll);
-      }
-  };
+    const handleSelectAll = () => {
+        if (data) {
+            if (selectAll) {
+                setSelectedRows([]);
+            } else {
+                setSelectedRows(data.data.data.map((item) => item.id));
+            }
+            setSelectAll(!selectAll);
+        }
+    };
 
-  const handleDeleteSelection = () => {
-      if (selectedRows.length == 0) {
-          Swal.fire("Informasi", `Pilih data yang ingin dihapus`, "warning");
-      } else {
-          Swal.fire({
-              title: "Konfirmasi?",
-              text: `Apakah yakin ingin menghapus data`,
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#3085d6",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Ya",
-          }).then(async (result) => {
-              if (result.isConfirmed) {
-                  Swal.fire({
-                      title: "Loading",
-                      html: '<div class="body-loading"><div class="loadingspinner"></div></div>', // add html attribute if you want or remove
-                      allowOutsideClick: false,
-                      showConfirmButton: false,
-                  });
+    const handleDeleteSelection = () => {
+        if (selectedRows.length == 0) {
+            Swal.fire("Informasi", `Pilih data yang ingin dihapus`, "warning");
+        } else {
+            Swal.fire({
+                title: "Konfirmasi?",
+                text: `Apakah yakin ingin menghapus data`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Loading",
+                        html: '<div class="body-loading"><div class="loadingspinner"></div></div>', // add html attribute if you want or remove
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                    });
 
-                  const result = await fetch(
-                      "/api/surat/masuk/deleteSelection",
-                      {
-                          method: "POST",
-                          headers: {
-                              "Content-Type": "application/json",
-                          },
-                          body: JSON.stringify({ id: selectedRows }), // Ganti dengan data yang ingin Anda kirim
-                      }
-                  );
+                    const result = await fetch(
+                        "/api/surat/masuk/deleteSelection",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ id: selectedRows }), // Ganti dengan data yang ingin Anda kirim
+                        }
+                    );
 
-                  if (result.ok) {
-                      const data = await result.json();
-                      if (data.status == "berhasil") {
-                          Swal.fire(
-                              "Berhasil",
-                              `${data.messages}`,
-                              "success"
-                          ).then(() => {
-                              setSelectedRows([]);
-                              setSelectAll(false);
-                              mutate(url);
-                          });
-                      } else {
-                          Swal.fire("Gagal", `${data.messages}`, "error");
-                      }
-                  } else {
-                      Swal.fire("Gagal", `Gagal menghapus data`, "error");
-                  }
-              }
-          });
-      }
-  };
+                    if (result.ok) {
+                        const data = await result.json();
+                        if (data.status == "berhasil") {
+                            Swal.fire(
+                                "Berhasil",
+                                `${data.messages}`,
+                                "success"
+                            ).then(() => {
+                                setSelectedRows([]);
+                                setSelectAll(false);
+                                mutate(url);
+                            });
+                        } else {
+                            Swal.fire("Gagal", `${data.messages}`, "error");
+                        }
+                    } else {
+                        Swal.fire("Gagal", `Gagal menghapus data`, "error");
+                    }
+                }
+            });
+        }
+    };
 
     const handleDelete = (id) => {
-      Swal.fire({
-          title: "Konfirmasi?",
-          text: `Apakah yakin ingin menghapus data`,
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Ya",
-      }).then(async (result) => {
-          if (result.isConfirmed) {
-              Swal.fire({
-                  title: "Loading",
-                  html: '<div class="body-loading"><div class="loadingspinner"></div></div>', // add html attribute if you want or remove
-                  allowOutsideClick: false,
-                  showConfirmButton: false,
-              });
+        Swal.fire({
+            title: "Konfirmasi?",
+            text: `Apakah yakin ingin menghapus data`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya",
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Loading",
+                    html: '<div class="body-loading"><div class="loadingspinner"></div></div>', // add html attribute if you want or remove
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                });
 
-              const result = await fetch(`/api/surat/masuk/delete`, {
-                  method: "POST",
-                  headers: {
-                      "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ id: id }), // Ganti dengan data yang ingin Anda kirim
-              });
+                const result = await fetch(`/api/surat/masuk/delete`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }), // Ganti dengan data yang ingin Anda kirim
+                });
 
-              if (result.ok) {
-                  const data = await result.json();
-                  if (data.status == "berhasil") {
-                      Swal.fire(
-                          "Berhasil",
-                          `${data.messages}`,
-                          "success"
-                      ).then(() => {
-                          mutate(url);
-                      });
-                  } else {
-                      Swal.fire("Gagal", `${data.messages}`, "error");
-                  }
-              } else {
-                  Swal.fire("Gagal", `Gagal menghapus data`, "error");
-              }
-          }
-      });
-  };
+                if (result.ok) {
+                    const data = await result.json();
+                    if (data.status == "berhasil") {
+                        Swal.fire(
+                            "Berhasil",
+                            `${data.messages}`,
+                            "success"
+                        ).then(() => {
+                            mutate(url);
+                        });
+                    } else {
+                        Swal.fire("Gagal", `${data.messages}`, "error");
+                    }
+                } else {
+                    Swal.fire("Gagal", `Gagal menghapus data`, "error");
+                }
+            }
+        });
+    };
 
     return (
         <SuratMasukContext.Provider
@@ -220,7 +220,12 @@ const SuratMasuk = () => {
                         </div>
                         <div className="flex flex-row gap-2 cursor-default mt-0 md:mt-0">
                             <input
-                                onChange={(e) => {}}
+                                onChange={(e) =>
+                                    setOption({
+                                        ...option,
+                                        search: e.target.value,
+                                    })
+                                }
                                 className="py-2 px-6 border-[2px] rounded-lg outline-none w-full md:flex-1 md:max-w-[400px]"
                                 placeholder="Search..."
                                 type="text"

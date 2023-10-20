@@ -19,7 +19,11 @@ class SuratController extends Controller
 
     public function suratMasuk(Request $request)
     {
-        $data = Surat::orderBy('created_at', 'desc')->paginate(6);
+        if ($request->query('search') != '') {
+            $data = Surat::where('judul', 'LIKE', '%' . $request->query('search') . '%')->orderBy('created_at', 'desc')->paginate(6);
+        } else {
+            $data = Surat::orderBy('created_at', 'desc')->paginate(6);
+        }
         return Response()->json(
             array(
                 "status" => "Success",
