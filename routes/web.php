@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DataKelas\KelasController;
 use App\Http\Controllers\Admin\Mapel\PelajaranController;
+use App\Http\Controllers\Admin\Surat\SuratController;
 use App\Http\Controllers\PpdbController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -43,6 +44,12 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('mata-pelajaran')->group(function () {
         Route::get('/', [PelajaranController::class, 'index']);
+    });
+
+    Route::prefix('surat')->group(function () {
+        Route::prefix('masuk')->group(function () {
+            Route::get('/', [SuratController::class, 'masuk']);
+        });
     });
 });
 

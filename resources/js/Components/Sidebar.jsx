@@ -259,9 +259,9 @@ const Sidebar = ({ active }) => {
                         </div>
                     </Link>
                     <Link
-                        href="/dashboard"
+                        href="/admin/surat/masuk"
                         className={`flex flex-row justify-between h-fit py-2 cursor-pointer menu flex-none ${
-                            active == "Nilai"
+                            active == "surat"
                                 ? "bg-primary text-white"
                                 : "hover:bg-gray-200"
                         } px-4 rounded-md`}

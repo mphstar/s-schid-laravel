@@ -17,8 +17,8 @@ const Pagination = ({ page, setPage, lastPage, showItem, total }) => {
   return (
     <div className="w-full h-fit flex flex-col md:flex-row mt-8 justify-center items-center md:justify-between gap-2 mb-4">
       <div>
-        Showing <span className="font-bold">{showItem}</span> From{" "}
-        <span className="font-bold">{total}</span> Data
+        Showing <span className="font-bold">{total}</span> From{" "}
+        <span className="font-bold">{showItem}</span> Data
       </div>
       <div className="flex flex-row gap-1">
         {page > 1 ? (
